@@ -48,6 +48,12 @@ RUN apt-get install curl -y \
     && apt-get install -y \
     nodejs
 
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \ 
+    && apt install -y ./google-chrome-stable_current_amd64.deb \
+    && curl -sl https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh \
+    && bash nodesource_setup.sh \
+    && apt -y install nodejs
+
 EXPOSE 3332
 CMD npm install ; node index.js
 
